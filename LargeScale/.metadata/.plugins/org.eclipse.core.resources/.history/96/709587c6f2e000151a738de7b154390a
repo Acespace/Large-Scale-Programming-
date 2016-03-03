@@ -1,0 +1,19 @@
+
+public class driver{
+
+
+public static void main(String[] args) throws IOException {
+
+//new name and number
+
+	PhoneDirectory newDirectory = new PhoneDirectory();
+
+	newDirectory.newEntry("Alston", "2025575988");
+
+
+
+
+
+}
+
+}

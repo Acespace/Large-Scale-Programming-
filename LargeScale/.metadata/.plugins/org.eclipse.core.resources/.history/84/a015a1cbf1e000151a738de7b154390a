@@ -1,0 +1,37 @@
+package phone.properties;
+
+import java.io.*;
+import java.util.Properties;
+
+public class Main {
+
+	public static void main(String[] args) {
+	
+	Properties prop = new Properties();
+	OutputStream output = null;
+	
+	try {
+
+		output = new FileOutputStream("/Users/Alston/Documents/CODES/LargeScale/largeScale3/src/main/resources/phone.properties");
+		prop.store(output, null);
+
+	} catch (IOException io) {
+		io.printStackTrace();
+	} finally {
+		if (output != null) {
+			try {
+				output.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+ }
+
+
+
+
+
+
+}

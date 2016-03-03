@@ -1,0 +1,92 @@
+package phone.properties;
+
+import java.io.*;
+import java.util.Properties;
+
+public class PhoneDirectory {
+
+
+	void addEntry(String name, String number) throws IOException {
+		//print name and number
+
+		Properties prop = new Properties();
+		InputStream fileInput = null;
+		fileInput = new FileInputStream("/Users/Alston/Documents/CODES/LargeScale/largeScale3/src/main/resources/phone.properties");// attaching to property file
+		prop.load(fileInput);
+	
+	
+		Writer fileWriter = new FileWriter((prop.getProperty("path")), true);  //new append to file
+		fileWriter.write(name + " : " + number);
+		fileWriter.write(System.lineSeparator());
+		fileWriter.close();
+		
+		System.out.println("Just added: ");
+		System.out.println("Name: " + name);
+		System.out.println("Phone number: " + number);
+		//pass
+	}
+	
+	
+	void deleteEntry(string name) throws IOException {
+		//print name and number
+		
+		{
+			try {
+		        // input the file content to the String "input"
+				String newLine = System.getProperty("line.separator");
+		        BufferedReader file = new BufferedReader(new FileReader("/Users/Alston/Documents/CODES/LargeScale/largeScale3/src/main/resources/phone.properties"));
+		        String line;
+		        String input = "";
+
+		        while ((line = file.readLine()) != null) {
+		        	
+		        	if (line.toLowerCase().contains(name.toLowerCase())) {
+		        		line = "";
+		        	}
+		        }
+		        
+	    		System.out.println("That user was not found");
+		        file.close();
+
+		    } catch (Exception e) {
+		        System.out.println("Problem reading file.");
+		    }
+		}
+
+		//pass
+	}
+	
+	void changeEntry(String name, String number){
+		
+			try {
+		        // input the file content to the String "input"
+				String newLine = System.getProperty("line.separator");
+		        BufferedReader file = new BufferedReader(new FileReader("/Users/Alston/Documents/CODES/LargeScale/largeScale3/src/main/resources/phone.properties"));
+		        String line;
+		        String input = "";
+
+		        while ((line = file.readLine()) != null) {
+		        	
+		        	if (line.toLowerCase().contains(name.toLowerCase())) {
+		        		Writer fileWriter = new FileWriter((prop.getProperty("path")), true);  //new append to file
+		        		fileWriter.write(name + " : " + number);
+		        		fileWriter.write(System.lineSeparator());
+		        		fileWriter.close();	
+		        	}
+		      
+		        }
+		        
+	    		System.out.println("That user was not found");
+		        file.close();
+
+		    } catch (Exception e) {
+		        System.out.println("Problem reading file.");
+		    }
+	}
+	
+
+	
+	
+	
+
+}

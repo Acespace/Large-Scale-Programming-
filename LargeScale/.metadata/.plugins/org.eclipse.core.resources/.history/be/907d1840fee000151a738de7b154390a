@@ -1,0 +1,72 @@
+package Main.Java
+
+
+import java.io.*;
+import java.util.Properties;
+import java.util.Scanner;
+
+public class PhoneDirectory {
+
+
+	void addEntry(String name, String number) throws IOException {
+		//print name and number
+
+		Properties prop = new Properties();
+		InputStream fileInput = null;
+		fileInput = new FileInputStream("/Users/Alston/Documents/CODES/LargeScale/largeScale3/src/main/resources/phone.properties");// attaching to property file
+		prop.load(fileInput);
+	
+	
+		Writer fileWriter = new FileWriter((prop.getProperty("path")), true);  //new append to file
+		fileWriter.write(name + " : " + number);
+		fileWriter.write(System.lineSeparator());
+		fileWriter.close();
+		
+		System.out.println("Just added: ");
+		System.out.println("Name: " + name);
+		System.out.println("Phone number: " + number);
+		//pass
+	}
+	
+	
+	void deleteEntry(String name) throws IOException {
+
+				
+			try {
+				
+				  // input the file content to the String "input"
+				String newLine = System.getProperty("line.separator");
+		        BufferedReader file = new BufferedReader(new FileReader("/Users/Alston/Documents/CODES/LargeScale/largeScale3/src/main/resources/phone.properties"));
+		        String line;
+		        String input = "";
+
+			
+			 while ((line = file.readLine()) != null) {
+		        	
+		        	if (line.toLowerCase().contains(name.toLowerCase())) {
+		        		line = "";
+		        	}
+		        
+		        	input += line + newLine;
+		        
+		        }
+				
+
+			 file1.close();
+			 FileOutputStream fileOut = new FileOutputStream("directory.txt");
+			 String input1;
+	 
+			 fileOut.write(input1.getBytes());
+			 fileOut.close();
+	 
+			}
+   
+	 catch(FileNotFoundException e) {
+		 
+	 }
+	    //handle this
+	}
+}
+	
+	
+	
