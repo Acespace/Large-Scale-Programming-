@@ -1,0 +1,79 @@
+package phone.properties;
+
+import java.io.*;
+import java.util.Properties;
+//variable
+public class PhoneDirectory {
+	
+	InputStream varible() throws FileNotFoundException{
+		
+		InputStream fileInput = null;
+		fileInput = new FileInputStream("/Users/Alston/Documents/CODES/Large-Scale-Programming-/LargeScale/largeScale3/src/phone/properties/PhoneDirectory.java");// attaching to property file
+		
+		return fileInput;
+	
+	}
+	
+
+
+	public void addEntry(String name, String number) throws IOException {
+		//print name and number
+		Properties prop = new Properties();
+		prop.load(varible());
+	
+	
+		Writer fileWriter = new FileWriter((prop.getProperty("path")), true);  //new append to file
+		fileWriter.write(name + " : " + number);
+		fileWriter.write(System.lineSeparator());
+		fileWriter.close();
+		
+		System.out.println("Just added: ");
+		System.out.println("Name: " + name);
+		System.out.println("Phone number: " + number);
+		//pass
+	}
+	
+	
+	void deleteEntry(String name) throws IOException {
+		
+		
+		Properties prop = new Properties();
+		InputStream fileInput = null;
+		fileInput = new FileInputStream("/Users/Alston/Documents/CODES/Large-Scale-Programming-/LargeScale/largeScale3/src/main/resources/phone.properties");// attaching to property file
+		prop.load(fileInput);
+		
+		try {
+	        // input the file content to the String "input"
+			
+			BufferedReader file = new BufferedReader(new FileReader (prop.getProperty("path")));
+	        String line;
+	     
+
+	        while ((line = file.readLine()) != null) {
+	        	
+	        	if (line.toLowerCase().contains(name.toLowerCase())) {
+	        		  line = "";
+	        	line = "";
+	        	 
+	        	//System.out.println(newFile);
+	        }
+	        
+    		
+	        file.close();
+			
+			System.out.println("Deleted: ");
+			System.out.println("Name: " + name);
+
+	        }
+		}
+
+	     catch (Exception e) {
+	        System.out.println("Problem reading file.");
+	    }
+	}
+	
+
+}
+	
+	
+	
